@@ -296,7 +296,11 @@ class Demo:
         exp_root_dir = Path(__file__).parent / 'experiments/DPT'
         exp_dir = exp_root_dir / exp_name
         if not exp_dir.exists():
-            exp_dir = next(exp_root_dir.glob(f'{exp_name}*'))
+            # Try to find a matching directory, or raise a clear error
+            matches = list(exp_root_dir.glob(f'{exp_name}*'))
+            if not matches:
+                raise FileNotFoundError(f"Experiment directory not found: {exp_root_dir / exp_name}\nChecked: {exp_root_dir}\nAvailable: {[d.name for d in exp_root_dir.glob('*')]}")
+            exp_dir = matches[0]
         model_path = exp_dir / f'checkpoints/iter_{iteration:07}.pt'
         return model_path, exp_dir.relative_to(exp_root_dir)
 

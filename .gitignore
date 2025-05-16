@@ -1,3 +1,11 @@
+*.zip
+*.npy
+
+datasets/HDTF_TFHP/lmdb/
+experiments/
+models/data/FLAME2020/
+models/data/FLAME_masks
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
