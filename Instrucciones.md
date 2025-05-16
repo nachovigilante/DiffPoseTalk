@@ -20,3 +20,8 @@
     ```shell
     python demo.py --exp_name head-SA-hubert-WM --iter 110000 -a demo/input/audio/FAST.flac -c demo/input/coef/TH217.npy -s demo/input/style/TH217.npy -o TH217-FAST-TH217.mp4 -n 3 -ss 3 -sa 1.15 -dtr 0.99
     ```
+
+
+## Aclaración
+
+Si se corre desde WSL o algún headless, antes de `demo.py...` hay que poner: `xvfb-run -s "-screen 0 640x480x24" ...` para que funcione el display. Si no, no va a funcionar. Y es muy probable que haya que tocar el acceso a `/dev/dri/renderD128`. También puede hacer falta instalar osmesa: `sudo apt-get install libgl1-mesa-dri libosmesa6 libosmesa6-dev`
